@@ -97,6 +97,7 @@
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.2.1" level="project" />
     <orderEntry type="module" module-name="library" exported="" />
+    <orderEntry type="module" module-name="logCollector" exported="" />
     <orderEntry type="module" module-name="android-volley" exported="" />
   </component>
 </module>
