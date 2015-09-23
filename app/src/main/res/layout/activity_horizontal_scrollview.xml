@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.ys.libraryp.mylibraryproject.ui.HorizontalScrollviewActivity">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        >
+        <LinearLayout
+            android:id="@+id/title_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:gravity="center_vertical"
+            >
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!--
+
+    <GridView
+                android:id="@+id/gridview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#00000000"
+                android:columnWidth="60dip"
+                android:gravity="center"
+                android:horizontalSpacing="1.0dip"
+                android:listSelector="#00000000"
+                android:numColumns="auto_fit"
+                android:stretchMode="spacingWidthUniform"
+                android:verticalSpacing="1.0dip"
+                >
+
+            </GridView>
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        >
+        <com.ys.libraryp.mylibraryproject.view.FlowingView.FlowLayout
+            android:id="@+id/flowLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </com.ys.libraryp.mylibraryproject.view.FlowingView.FlowLayout>
+    </LinearLayout>
+
+    <TextView android:text="@string/hello_world"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+
+</LinearLayout>

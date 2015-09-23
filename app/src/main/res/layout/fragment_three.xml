@@ -1,0 +1,23 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ys.libraryp.mylibraryproject.fragment.ThreeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/fragment_three"
+        android:visibility="gone"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="我"
+        android:gravity="center"
+        android:background="@drawable/words"
+        android:textSize="14sp"
+        />
+</FrameLayout>

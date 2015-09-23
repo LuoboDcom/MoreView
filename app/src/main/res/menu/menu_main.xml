@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/menu_qq_friend"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:icon="@drawable/share_to_qq_friend_icon"
+        android:title="@string/menu_save"
+        app:showAsAction="ifRoom|" />
+    <item android:id="@+id/menu_qzone"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:icon="@drawable/share_to_qzone_icon"
+        android:title="@string/menu_go"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/menu_weibo"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:icon="@drawable/share_to_weibo_icon"
+        android:title="@string/menu_next"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/menu_wx_circle"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:icon="@drawable/share_to_wx_circle_icon"
+        android:title="@string/menu_from"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/menu_wx_friend"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:icon="@drawable/share_to_wx_friend_icon"
+        android:title="@string/menu_index"
+        app:showAsAction="ifRoom" />
+</menu>
