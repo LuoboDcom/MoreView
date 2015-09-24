@@ -188,6 +188,9 @@ public class ShareTABActivity extends AppCompatActivity implements  View.OnClick
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            /**
+             *   用于禁用viewpager的左右滑动功能
+             */
             mViewPager.setIsCanScroll(!mViewPager.getIsCanScroll());
             return true;
         }

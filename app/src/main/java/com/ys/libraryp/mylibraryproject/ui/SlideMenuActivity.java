@@ -1,40 +1,53 @@
 package com.ys.libraryp.mylibraryproject.ui;
 
+import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.ys.libraryp.mylibraryproject.R;
 import com.ys.libraryp.mylibraryproject.adapter.MyAdapter;
+import com.ys.libraryp.mylibraryproject.bean.ImageInfo;
+import com.ys.libraryp.mylibraryproject.fragment.ListFragmentOne;
+import com.ys.libraryp.mylibraryproject.fragment.ListFragmentThree;
+import com.ys.libraryp.mylibraryproject.fragment.ListFragmentTwo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *   RecyclerView
  */
 public class SlideMenuActivity extends ActionBarActivity {
 
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private LinearLayoutManager mLayoutManager;
-    private String[] strings = {"A","B","C","D","E"};
+    private FragmentTabHost mTabHost;
+    private View indicator = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slide_menu);
-        initView();
+        mTabHost = (FragmentTabHost) findViewById(R.id.tabHost);
+        mTabHost.setup(this, getSupportFragmentManager(), R.id.realTabContent);
+
+        //添加tab名称和图标
+        indicator = getIndicatorView("一");
+        mTabHost.addTab(mTabHost.newTabSpec("one").setIndicator(indicator), ListFragmentOne.class, null);
+        indicator = getIndicatorView("二");
+        mTabHost.addTab(mTabHost.newTabSpec("two").setIndicator(indicator), ListFragmentTwo.class,null);
+        indicator = getIndicatorView("三");
+        mTabHost.addTab(mTabHost.newTabSpec("three").setIndicator(indicator), ListFragmentThree.class,null);
     }
 
-    private void initView() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.listView);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(this);
-        mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyAdapter(strings);
-        mRecyclerView.setAdapter(mAdapter);
+    private View getIndicatorView(String name){
+        TextView tv = new TextView(this);
+        tv.setText(name);
+        return tv;
     }
 
     @Override

@@ -5,7 +5,8 @@
 
 
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <!--<android.support.v4.widget.SwipeRefreshLayout-->
+    <com.ys.libraryp.mylibraryproject.view.MySwipeLayout
         android:id="@+id/refreshLayout_one"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -27,6 +28,7 @@
                 >
             </LinearLayout>
         </RelativeLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </com.ys.libraryp.mylibraryproject.view.MySwipeLayout>
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
 </FrameLayout>

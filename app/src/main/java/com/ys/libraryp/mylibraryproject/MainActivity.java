@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshLayout);
         listView = (ListView) findViewById(R.id.listView);
-        refreshLayout.setColorSchemeResources(android.R.color.holo_blue_light,android.R.color.holo_green_light,android.R.color.holo_orange_light,android.R.color.holo_red_light);
+        refreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         refreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.black);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 handler.sendEmptyMessageDelayed(0,3000);
             }
         });
+        String s = getApplication().getResources().getString(R.string.time_error);
+        Log.i("1",s);
         initData();
     }
 

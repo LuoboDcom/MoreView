@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ys.libraryp.mylibraryproject.R;
+import com.ys.libraryp.mylibraryproject.view.MySwipeLayout;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -163,7 +164,7 @@ public class OneFragment extends Fragment {
         fragment_one.setText("fragmentOne");
         fragment_one.setTextColor(getResources().getColor(android.R.color.holo_orange_dark));
 
-        refreshLayout_one = (SwipeRefreshLayout) view.findViewById(R.id.refreshLayout_one);
+        refreshLayout_one = (MySwipeLayout) view.findViewById(R.id.refreshLayout_one);
         refreshLayout_one.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
         refreshLayout_one.setProgressBackgroundColorSchemeResource(android.R.color.black);
         refreshLayout_one.setOnRefreshListener(refreshListener);
