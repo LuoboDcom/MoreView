@@ -3,18 +3,35 @@ package com.ys.libraryp.mylibraryproject.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.ys.libraryp.mylibraryproject.MyApplication;
 import com.ys.libraryp.mylibraryproject.R;
+import com.ys.libraryp.mylibraryproject.RecyclerViewOptions.DividerItemDecoration;
 import com.ys.libraryp.mylibraryproject.adapter.MyAdapter;
 import com.ys.libraryp.mylibraryproject.bean.ImageInfo;
+import com.ys.libraryp.mylibraryproject.bean.ProductInfo;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ *  RecyclerView  LinearLayoutManager(线性布局)
+ */
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +53,7 @@ public class ListFragmentOne extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private LinearLayoutManager mLayoutManager;
     private List<ImageInfo> imageInfoList;
+    private ImageView card_img;
 
     /**
      * Use this factory method to create a new instance of
@@ -90,16 +108,31 @@ public class ListFragmentOne extends Fragment {
         imageInfoList.add(imageInfo4);
         ImageInfo imageInfo5 = new ImageInfo("五","第五张图",R.drawable.share_to_wx_circle_icon);
         imageInfoList.add(imageInfo5);
+
     }
 
     private void initView() {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.listView);
-        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(true);//可以提高效率
         mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(
+                getActivity(), DividerItemDecoration.VERTICAL_LIST));
         mAdapter = new MyAdapter(imageInfoList);
         mRecyclerView.setAdapter(mAdapter);
+
+        card_img = (ImageView) view.findViewById(R.id.card_img);
+        card_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageInfo imageInfo5 = new ImageInfo("六","第六张图",R.drawable.share_to_wx_friend_icon);
+                imageInfoList.add(imageInfo5);
+                mAdapter.notifyItemInserted(imageInfoList.size());
+                mAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
 }

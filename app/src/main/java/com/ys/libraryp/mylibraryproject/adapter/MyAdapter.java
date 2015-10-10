@@ -2,6 +2,7 @@ package com.ys.libraryp.mylibraryproject.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     //Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(MyAdapter.ViewHolder holder, final int position) {
         ImageInfo info = datas.get(position);
+        holder.itemView.setTag(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer index = (Integer) v.getTag();
+                int i = index.intValue();
+                Log.i("ys","i==="+i);
+                datas.remove(i);
+                notifyItemRemoved(index.intValue());
+                notifyDataSetChanged();
+            }
+        });
         holder.card_tv1.setText(info.getImageAlt());
         holder.card_tv2.setText(info.getImageDes());
         holder.card_img.setImageResource(info.getImageUrl());

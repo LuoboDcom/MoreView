@@ -316,6 +316,13 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
 	}
 
 	/**
+	 *  返回当前刷新的状态
+	 */
+	public boolean isRefreshing(){
+		return currentStatus == STATUS_REFRESHING;
+	}
+
+	/**
 	 * 根据当前ListView的滚动状态来设定 {@link #ableToPull}
 	 * 的值，每次都需要在onTouch中第一个执行，这样可以判断出当前应该是滚动ListView，还是应该进行下拉。
 	 * 

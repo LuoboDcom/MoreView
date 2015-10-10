@@ -4,13 +4,6 @@
     android:orientation="vertical"
     tools:context="com.ys.libraryp.mylibraryproject.ui.SlideMenuActivity">
 
-    <FrameLayout
-        android:id="@+id/realTabContent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        />
-
     <android.support.v4.app.FragmentTabHost
         android:id="@+id/tabHost"
         android:layout_width="match_parent"
@@ -24,5 +17,12 @@
             >
         </TabWidget>
     </android.support.v4.app.FragmentTabHost>
+
+    <FrameLayout
+        android:id="@+id/realTabContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
 
 </LinearLayout>

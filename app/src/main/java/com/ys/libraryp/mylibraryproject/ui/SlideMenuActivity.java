@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,7 +47,9 @@ public class SlideMenuActivity extends ActionBarActivity {
 
     private View getIndicatorView(String name){
         TextView tv = new TextView(this);
+        tv.setPadding(20,20,20,20);
         tv.setText(name);
+        tv.setGravity(Gravity.CENTER);
         return tv;
     }
 
