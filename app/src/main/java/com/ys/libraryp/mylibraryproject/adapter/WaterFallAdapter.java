@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -31,13 +32,13 @@ public class WaterFallAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<T> list;
     private DisplayImageOptions options;
     private ImageLoadingListener imageLoadingListener;
+    private static int width;
 
-    public WaterFallAdapter(List<T> list,ImageLoadingListener imageLoadingListener){
+    public WaterFallAdapter(List<T> list,ImageLoadingListener imageLoadingListener,int width){
         this.list = list;
         this.imageLoadingListener = imageLoadingListener;
+        this.width = width;
 
-//        Display currentDisplay = getWindowManager().getDefaultDisplay();
-//        int dw = currentDisplay.getWidth();
         BitmapFactory.Options  decodeOptions = new BitmapFactory.Options();
         decodeOptions.outHeight = 160;
         decodeOptions.outWidth = 160;
@@ -49,7 +50,7 @@ public class WaterFallAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
                 .showImageOnFail(R.drawable.ic_error)
                 .decodingOptions(decodeOptions)
                 .displayer(new SimpleBitmapDisplayer())
-                .cacheInMemory(false)
+                .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .considerExifParams(true)
 //                .displayer(new CircleBitmapDisplayer(Color.WHITE, 5))
@@ -94,6 +95,8 @@ public class WaterFallAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
             super(itemView);
             masonry_item_img = (ImageView) itemView.findViewById(R.id.masonry_item_img);
             masonry_item_title = (TextView) itemView.findViewById(R.id.masonry_item_title);
+            masonry_item_img.setLayoutParams(new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT));
+            masonry_item_img.setScaleType(ImageView.ScaleType.FIT_XY);
         }
     }
 }

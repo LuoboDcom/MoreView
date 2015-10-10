@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +58,7 @@ public class ListFragmentTwo extends Fragment {
     private List<ProductInfo> productInfoList;
     private int startId = 0;
     private int nums = 20;
+    private  int dw;
     //图片加载回调
     private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 
@@ -84,6 +87,10 @@ public class ListFragmentTwo extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Display currentDisplay = getActivity().getWindowManager().getDefaultDisplay();
+        DisplayMetrics dp = new DisplayMetrics();
+        currentDisplay.getMetrics(dp);
+        dw = (int)(dp.widthPixels/dp.density) - 20;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -108,7 +115,7 @@ public class ListFragmentTwo extends Fragment {
 //        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         gridLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        waterFallAdapter = new WaterFallAdapter(productInfoList,animateFirstListener);
+        waterFallAdapter = new WaterFallAdapter<>(productInfoList,animateFirstListener,dw);
         recyclerView.setAdapter(waterFallAdapter);
         SpacesItemDecoration decoration = new SpacesItemDecoration(10,2);
         recyclerView.addItemDecoration(decoration);
@@ -139,7 +146,7 @@ public class ListFragmentTwo extends Fragment {
 //                    int[] into = mGridLayoutManager.findLastVisibleItemPositions(null);
 //                    if (into[0] > productInfoList.size() - 3) {//最后一个位置的时
 
-                    int lastPro =  gridLayoutManager.findLastCompletelyVisibleItemPosition();
+                    int lastPro =  gridLayoutManager.findLastVisibleItemPosition();
                     if (lastPro > productInfoList.size() - 2) {//最后一个位置的时
 
                         // 候加载更多
