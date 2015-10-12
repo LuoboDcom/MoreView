@@ -90,7 +90,7 @@ public class ListFragmentTwo extends Fragment {
         Display currentDisplay = getActivity().getWindowManager().getDefaultDisplay();
         DisplayMetrics dp = new DisplayMetrics();
         currentDisplay.getMetrics(dp);
-        dw = (int)(dp.widthPixels/dp.density) - 20;
+        dw = (int)(dp.widthPixels/ 2) - 20;
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -131,11 +131,11 @@ public class ListFragmentTwo extends Fragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    Log.i("request", "SCROLL_STATE_IDLE");
-                    ImageLoader.getInstance().pause();
-                }else{
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    Log.i("request", "SCROLL_STATE_IDLE===width=="+recyclerView.getWidth());
                     ImageLoader.getInstance().resume();
+                }else{
+                    ImageLoader.getInstance().pause();
                 }
 
                 if (isPullUp && !isRefreshing) {

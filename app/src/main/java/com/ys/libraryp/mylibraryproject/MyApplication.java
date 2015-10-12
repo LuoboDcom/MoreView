@@ -76,7 +76,7 @@ public class MyApplication extends Application{
         config.denyCacheImageMultipleSizesInMemory();
         config.diskCache(new UnlimitedDiskCache(cacheDir));
         config.diskCacheFileNameGenerator(new Md5FileNameGenerator());
-        config.memoryCacheSize(2 * 1024 * 1024);
+        config.memoryCacheSize(5 * 1024 * 1024);
 //        config.memoryCacheSizePercentage(90);
         config.diskCacheSize(10 * 1024 * 1024); // 50 MiB
         config.tasksProcessingOrder(QueueProcessingType.LIFO);

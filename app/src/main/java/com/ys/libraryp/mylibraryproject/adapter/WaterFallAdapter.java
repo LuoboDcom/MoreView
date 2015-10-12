@@ -3,6 +3,7 @@ package com.ys.libraryp.mylibraryproject.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -14,7 +15,10 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.SimpleBitmapDisplayer;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.ys.libraryp.mylibraryproject.MyApplication;
@@ -50,6 +54,8 @@ public class WaterFallAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
                 .showImageOnFail(R.drawable.ic_error)
                 .decodingOptions(decodeOptions)
                 .displayer(new SimpleBitmapDisplayer())
+                .resetViewBeforeLoading(false)
+//                .displayer(new FadeInBitmapDisplayer(100))
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .considerExifParams(true)
@@ -79,7 +85,9 @@ public class WaterFallAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
 //                }
 //            }
 //        });
-        ImageLoader.getInstance().displayImage(info.getImageUrl(), ((ViewHolder) holder).masonry_item_img, options, imageLoadingListener);
+        ImageAware imageAware = new ImageViewAware(((ViewHolder) holder).masonry_item_img,false);
+        ImageLoader.getInstance().displayImage(info.getImageUrl(), imageAware, options, imageLoadingListener);
+//        ImageLoader.getInstance().displayImage(info.getImageUrl(), ((ViewHolder) holder).masonry_item_img, options, imageLoadingListener);
     }
 
     @Override
@@ -95,8 +103,8 @@ public class WaterFallAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
             super(itemView);
             masonry_item_img = (ImageView) itemView.findViewById(R.id.masonry_item_img);
             masonry_item_title = (TextView) itemView.findViewById(R.id.masonry_item_title);
-            masonry_item_img.setLayoutParams(new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT));
-            masonry_item_img.setScaleType(ImageView.ScaleType.FIT_XY);
+            masonry_item_img.setLayoutParams(new LinearLayout.LayoutParams(width, width));
+//            masonry_item_img.setScaleType(ImageView.ScaleType.FIT_XY);
         }
     }
 }
